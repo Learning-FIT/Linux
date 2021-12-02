@@ -1,6 +1,6 @@
 ## シェル
 
-1. `alias='ls -al'`
+1. `alias ls='ls -al'`
 2. `find / -name *.sh | xargs grep "alias ls='ls --color=auto'"`
 3. `find / -name *.sh | xargs grep "alias ls='ls --color=auto'" > results.txt`
 4. `sudo find /etc -type f | sudo xargs grep "UseDNS yes" 2>/dev/null`
