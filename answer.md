@@ -1,11 +1,13 @@
-## シェル
+## Linux (2)
+
+### シェル
 
 1. `alias ls='ls -al'`
 2. `find / -name *.sh | xargs grep "alias ls='ls --color=auto'"`
 3. `find / -name *.sh | xargs grep "alias ls='ls --color=auto'" > results.txt`
 4. `sudo find /etc -type f | sudo xargs grep "UseDNS yes" 2>/dev/null`
 
-## まとめ
+### まとめ
 
 ```bash
 #!/bin/bash
@@ -25,4 +27,24 @@ tar cvzf $filename .bash_profile .bash_history
 
 # バックアップファイルの移動
 mv $filename ~/backup
+```
+
+## Linux (3)
+
+### まとめ
+
+```bash
+#!/bin/bash
+
+if [ ! -d /opt/backup ]; then
+  mkdir /opt/backup
+fi
+
+datetime=`date +'%Y%m%d%H%M%S'`
+filename="$datetime.tar.gz"
+cd /var/www/wordpress/wp-content
+mysqldump -u wordpress -pwp_password wordpress > wordpress.sql
+tar cvzf $filename *
+rm wordpress.sql
+mv $filename /opt/backup
 ```
